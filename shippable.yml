@@ -5,6 +5,19 @@ before_script: mkdir -p shippable/codecoverage shippable/testresults
 install: pip install --use-mirrors -r requirements.txt
 script: 
   - echo $COMMIT
+  - echo $DEBIAN_FRONTEND
+  - echo $USER
+  - echo $LANG
+  - echo $LC_ALL
+  - echo $RAILS_ENV
+  - echo $RACK_ENV
+  - echo $MERB_ENV
+  - echo $JRUBY_OPTS
+  - echo $BUILD_NUMBER
+  - echo $BRANCH
+  - echo $JOB_ID
+  - echo $PULL_REQUEST
+  - echo $COMMIT
   - nosetests python/sample.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
   - coverage run --branch python/sample.py
   - coverage xml -o shippable/codecoverage/coverage.xml python/sample.py
